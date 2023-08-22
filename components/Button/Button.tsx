@@ -11,7 +11,7 @@ const Button = ({ children, appearance, arrow = 'none', className, ...props }: B
     }, styles.button, className)} {...props}>
       {children}
       {arrow !== 'none' && <span className={cn({ [styles.down]: arrow === 'down' }, styles.arrow)}>
-        <ArrowIcon/>
+        <ArrowIcon />
       </span>}
     </button>
   );
