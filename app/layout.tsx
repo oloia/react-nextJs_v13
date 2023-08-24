@@ -2,7 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import { ReactNode } from 'react';
-import { Footer, Header, Sidebar } from '@/components';
+import { Footer, Header, Menu, Sidebar } from '@/components';
+import styles from '@/app/layout.module.css'
 
 const noto = Noto_Sans_KR({ subsets: ['latin'], weight: ['300', '400', '500', '700'] });
 
@@ -13,16 +14,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={noto.className}>
-        <Header/>
-        <div>
-          <Sidebar/>
-          <div>
+    <html  lang="en" suppressHydrationWarning={true}>
+      <body className={noto.className} suppressHydrationWarning={true}>
+      <div className={styles.wrapper}>
+
+        <Header className={styles.header}/>
+        <Sidebar className={styles.sidebar}/>
+
+          <div className={styles.body}>
             {children}
           </div>
-        </div>
-        <Footer/>
+        <Footer className={styles.footer}/>
+      </div>
       </body>
     </html>
   );
