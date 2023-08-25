@@ -55,11 +55,11 @@
 }
 
 .secondLevelBlock {
-    overflow: hidden;
+    display: none;
+}
 
-    padding: 0;
-
-    list-style: none;
+.secondLevelBlockOpened {
+    display: block;
 }
 
 .thirdLevel {

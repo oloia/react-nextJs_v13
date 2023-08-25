@@ -1,4 +1,3 @@
-import { MenuItem } from '@/interfaces/menu.inteface';
 import { API } from '@/app/api';
 import { ProductModel } from '@/interfaces/product.interface';
 
@@ -9,7 +8,7 @@ export async function getProduct(category: string): Promise<ProductModel[]> {
       category,
       limit: 10,
     }),
-    headers: new Headers({ 'content-type': 'application/json' })
+    headers: new Headers({ 'content-type': 'application/json' }),
   });
   return res.json();
 }
