@@ -1,16 +1,19 @@
 import { SidebarProps } from '@/components/Sidebar/Sidebar.props';
-import { Menu } from '@/components';
+import { Menu, Search } from '@/components';
 import { getMenu } from '@/api/menu';
 import { TopLevelCategory } from '@/interfaces/page.inteface';
-import { firstLevelMenu } from '@/helpers/helpers';
+import Logo from '@/components/Menu/icons/logo.svg';
+import cn from 'classnames';
+import styles from './Sidebar.module.css'
 
-const Sidebar = async ({ ...props }: SidebarProps) => {
+const Sidebar = async ({className, ...props }: SidebarProps) => {
   // const firstCategoryItem = firstLevelMenu.find(m => m.route === params.type)
   const menu = await getMenu(TopLevelCategory.Courses);
   return (
-    <div {...props}>
-      Sidebar
-      <Menu menu={menu} />
+    <div {...props} className={cn(className, styles.sidebar)}>
+      <Logo />
+      <Search />
+      <Menu menu={menu} category={TopLevelCategory.Courses}/>
     </div>
   );
 };

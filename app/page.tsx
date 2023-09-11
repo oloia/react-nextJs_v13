@@ -1,9 +1,10 @@
 // 'use client';
-import { Button, Htag, Paragraph, Rating, Tag } from '@/components';
-import { Metadata } from 'next';
+import { Button, Htag, Input, Paragraph, Rating, Tag, Textarea } from '@/components';
+import { GetStaticPropsContext, Metadata } from 'next';
 import { getMenu } from '@/api/menu';
 import { getProduct } from '@/api/product';
 import { getPage } from '@/api/page';
+import { ParsedUrlQuery } from 'querystring';
 
 export async function generateMetadata(): Promise<Metadata>{
   return {
@@ -17,6 +18,7 @@ const Home = async () =>  {
 
   return (
     <>
+
       <Htag tag={'h3'}>title</Htag>
       <Button appearance="primary" arrow="right" >button 1</Button>
       <Button appearance="ghost" arrow="right">button 2</Button>
@@ -28,7 +30,9 @@ const Home = async () =>  {
       <Tag size="m" color="primary">text</Tag>
       <Tag size="s" color="grey">text</Tag>
       <Tag size="m" color="green">text</Tag>
-      {/*<Rating rating={4} isEditable />*/}
+      <Input placeholder="test" />
+      <Rating rating={4} isEditable />
+      <Textarea />
     </>
   );
 };

@@ -1,6 +1,5 @@
 'use client';
 import { FirstLevelMenuItem, MenuItem, PageItem } from '@/interfaces/menu.inteface';
-import { TopLevelCategory } from '@/interfaces/page.inteface';
 import cn from 'classnames';
 import styles from './Menu.module.css';
 import Link from 'next/link';
@@ -10,9 +9,10 @@ import { firstLevelMenu } from '@/helpers/helpers';
 
 interface MenuProps {
   menu: MenuItem[];
+  category: number;
 }
 
-const Menu: FC<MenuProps> = ({ menu }) => {
+const Menu: FC<MenuProps> = ({ menu, category }) => {
   const pathname = usePathname();
   const [menuItem, setMenuItem] = useState<MenuItem[]>(menu);
 
@@ -32,13 +32,13 @@ const Menu: FC<MenuProps> = ({ menu }) => {
           <div key={m.id}>
             <Link href={`/${m.route}`}>
               <div className={cn({
-                [styles.firstLevelActive]: m.id === TopLevelCategory.Courses,
+                [styles.firstLevelActive]: m.id === category,
               }, styles.firstLevel)}>
                 {m.icon}
                 <span>{m.name}</span>
               </div>
             </Link>
-            {m.id === TopLevelCategory.Courses && buildSecondLevel(m)}
+            {m.id === category && buildSecondLevel(m)}
           </div>
         ))}
       </>
