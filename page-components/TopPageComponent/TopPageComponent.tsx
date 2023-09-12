@@ -1,6 +1,6 @@
 'use client';
 import { TopPageComponentProps } from '@/page-components/TopPageComponent/TopPageComponent.props';
-import { Advantages, HhData, Htag, Sort, Tag } from '@/components';
+import { Advantages, HhData, Htag, Product, Sort, Tag } from '@/components';
 import styles from '@/page-components/TopPageComponent/TopPageComponent.module.css';
 import { TopLevelCategory } from '@/interfaces/page.inteface';
 import { SortEnum } from '@/components/Sort/Sort.props';
@@ -22,7 +22,7 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
       </div>
       <div>
         {sortedProducts && sortedProducts.map(p => (
-          <div key={p._id}>{p.title}</div>
+          <Product key={p._id} product={p} />
         ))}
         <div className={styles.hhTitle}>
           <Htag tag={'h2'}>Вакансии - {page?.category}</Htag>
